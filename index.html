@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz cumpleaños, Diego</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>body{margin:0}</style>
+</head>
+<body>
+<div id="sky" aria-hidden="true"><canvas id="land"></canvas></div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="title-box">
+      <h1 class="title" id="title">¡Feliz cumpleaños Corazón de Melón!</h1>
+      <span class="splash" aria-hidden="true">¡Nawebona e lacreo!</span>
+    </div>
+    <p class="sub">Hoy el servidor entero celebra al mejor jugador que conozco: tú. Nivel 18 desbloqueado.</p>
+
+    <button class="cake-stage" id="cakeBtn" aria-label="Soplar las velas del pastel">
+      <div class="shadow"></div>
+      <div class="tilt">
+        <div class="cake" id="cake">
+          <div class="face f-front side"></div><div class="face f-back side"></div>
+          <div class="face f-right side"></div><div class="face f-left side"></div>
+          <div class="face f-top" id="cakeTop"></div><div class="face f-bottom"></div>
+        </div>
+      </div>
+    </button>
+    <div class="hint" id="hint">▶ Toca el pastel y pide un deseo</div>
+
+    <div class="xp">
+      <div class="xp-level" id="lvl">NIVEL 18</div>
+      <div class="xp-bar"><div class="xp-fill"></div></div>
+      <div class="hearts" id="hearts" aria-label="Vidas llenas"></div>
+    </div>
+  </header>
+
+  <section aria-labelledby="h-inv">
+    <div class="panel">
+      <h2 id="h-inv">Inventario de razones por las que eres el más pro</h2>
+      <p class="lead">Cada objeto guarda una razón. Elige una casilla.</p>
+      <div class="item-name" id="itemName">Corazón</div>
+      <div class="hotbar" id="hotbar" role="listbox" aria-label="Objetos"></div>
+      <div class="reason" id="reason" aria-live="polite"><b>Corazón</b><p></p><div class="lore"></div></div>
+      <p class="kbd-tip">En computadora también puedes usar las teclas 1 a 9.</p>
+    </div>
+  </section>
+
+
+  <section aria-labelledby="h-count">
+    <div class="panel">
+      <h2 id="h-count">Tiempo jugando en el mismo servidor</h2>
+      <div id="counter" data-inicio="2023-11-18">
+        <div class="count-grid">
+          <div class="count-box"><strong id="cD">0</strong><span>días</span></div>
+          <div class="count-box"><strong id="cH">0</strong><span>horas</span></div>
+          <div class="count-box"><strong id="cM">0</strong><span>minutos</span></div>
+          <div class="count-box" id="cSbox"><strong id="cS">0</strong><span>segundos</span></div>
+        </div>
+        <p class="since" id="since"></p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-gal">
+    <div class="panel">
+      <h2 id="h-gal">Capturas de nuestras aventuras</h2>
+      <p class="lead">Momentos guardados para siempre en el mapa.</p>
+      <div class="gallery">
+        <figure class="frame" style="--rot:-2deg"><div class="photo"><img src="fotos/foto1.jpeg" alt="Foto 1"></div><figcaption>Foto que siempre me hace reír</figcaption></figure>
+        <figure class="frame" style="--rot:1.5deg"><div class="photo"><img src="fotos/foto2.jpeg" alt="Foto 2"></div><figcaption>Rolo e Lamparita</figcaption></figure>
+        <figure class="frame" style="--rot:-1deg"><div class="photo"><img src="fotos/foto3.jpeg" alt="Foto 3"></div><figcaption>EL clavo gangrena</figcaption></figure>
+        <figure class="frame" style="--rot:2deg"><div class="photo"><img src="fotos/foto5.jpeg" alt="Foto 4"></div><figcaption>Esa salida que no olvido</figcaption></figure>
+        <figure class="frame" style="--rot:-1.5deg"><div class="photo"><img src="fotos/foto4.jpeg" alt="Foto 5"></div><figcaption>Éramos unos fetos</figcaption></figure>
+        <figure class="frame" style="--rot:1deg"><div class="photo"><img src="fotos/foto6.jpeg" alt="Foto 6"></div><figcaption>Los más bellos pue</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-chest">
+    <div class="panel">
+      <h2 id="h-chest">Cofre con botín especial</h2>
+      <div class="chest-row">
+        <button class="chest" id="chest" aria-label="Abrir el cofre">
+          <div class="glow"></div>
+          <div class="lid"></div><div class="lock"></div><div class="base"></div>
+        </button>
+        <div class="letter" id="letter">
+          <p class="closed" id="closedMsg">Este cofre está cerrado. Ábrelo para leer lo que tiene dentro.</p>
+          <p id="typed" hidden></p>
+          <div class="sign">— Tu Chakalita ♥</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section aria-labelledby="h-cup">
+    <div class="panel">
+      <h2 id="h-cup">Cupones canjeables</h2>
+      <p class="lead">Toca un cupón para canjearlo. Válidos para siempre, bb.</p>
+      <div class="coupons" id="coupons">
+        <button class="coupon" data-id="abrazo" data-icon="heart"><b>Vale por</b><span>Un abrazo de 10 minutos sin soltarte</span><small>Canjeable en cualquier momento</small></button>
+        <button class="coupon" data-id="juego" data-icon="diamond"><b>Vale por</b><span>Una noche entera jugando frifayer</span><small>Maincra no pq me mareo</small></button>
+        <button class="coupon" data-id="comida" data-icon="cookie"><b>Vale por</b><span>Una comidita rica en mi casita</span><small>Cuando quieras</small></button>
+        <button class="coupon" data-id="besos" data-icon="apple"><b>Vale por</b><span>Besos ilimitados por un día</span><small>Sin fecha de vencimiento</small></button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-game">
+    <div class="panel">
+      <h2 id="h-game">Mini juego: atrapa 18 tesoros</h2>
+      <p class="lead">Mueve el cofre con el dedo, el mouse o las flechas. Atrapa diamantes, corazones y oro. Esquiva las piedras.</p>
+      <div class="game" id="game">
+        <canvas id="gameCanvas" aria-label="Mini juego"></canvas>
+        <div class="hud"><span id="gScore">Tesoros: 0/18</span><span id="gLives"></span></div>
+        <div class="game-over" id="gOver">
+          <h3 id="gTitle">¿Listo, Diego?</h3>
+          <p id="gText">Atrapa 18 tesoros, uno por cada año, para desbloquear tu premio.</p>
+          <button class="btn" id="gStart">Jugar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" aria-labelledby="h-final">
+    <h2 id="h-final" class="title" style="font-size:clamp(16px,3.4vw,26px)">Que el nivel 18 sea el mejor</h2>
+    <p>Por más aventuras juntos, más atardeceres cuadrados y más noches construyendo cosas a tu lado.</p>
+    <button class="btn" id="fwBtn">Lanzar fuegos artificiales</button>
+    <p class="psst">psst… este mundo esconde 4 secretos. Pistas: escribe cómo una frase que solíamos decir, empieza con "t", insiste con el título, juega con las flores y usa una fecha especial.</p>
+  </section>
+</div>
+
+<div class="ground" id="ground" aria-hidden="true"></div>
+<div class="secret" id="secret" role="dialog" aria-modal="true" aria-labelledby="secretTitle">
+  <div class="secret-card">
+    <img class="big" id="secretImg" alt="">
+    <h3 id="secretTitle">¡Encontraste el nivel secreto!</h3>
+    <p>Bb, si llegaste hasta aquí es porque me conoces demasiado bien y porque te gusta el pene. Eres mi persona favorita en este mundo y en todos los que construyamos. Te amo, Diego.</p>
+    <button class="btn" id="secretClose">Volver al mundo</button>
+  </div>
+</div>
+<div class="secret" id="secret4" role="dialog" aria-modal="true" aria-labelledby="secret4Title">
+  <div class="secret-card" style="border-color:var(--gold); box-shadow:0 0 40px rgba(255,216,59,.7)">
+    <img class="big" id="secret4Img" alt="">
+    <h3 id="secret4Title" style="color:var(--gold)">¡Rompiste el título!</h3>
+    <p>Lo tocaste tanto que se desarmó en bloques, igual que yo cuando me miras. El título ya se volvió a armar. Yo todavía no.</p>
+    <button class="btn" data-close>Volver al mundo</button>
+  </div>
+</div>
+<div class="secret" id="secret2" role="dialog" aria-modal="true" aria-labelledby="secret2Title">
+  <div class="secret-card">
+    <!-- FOTO SECRETA: pon tu foto en src="" -->
+    <div class="photo" style="width:200px; margin:0 auto 14px"><img src="" alt="Foto secreta"></div>
+    <h3 id="secret2Title">Secreto del jardín</h3>
+    <p>Encontraste la flor mágica. Esta foto es solo para ti.</p>
+    <button class="btn" data-close>Volver al mundo</button>
+  </div>
+</div>
+<div class="secret" id="secret3" role="dialog" aria-modal="true" aria-labelledby="secret3Title">
+  <div class="secret-card">
+    <img class="big" id="secret3Img" alt="">
+    <h3 id="secret3Title">¡Código legendario!</h3>
+    <p>Usaste el código secreto de los papus. Premio: soy tuya en todos los niveles.</p>
+    <button class="btn" data-close>Volver al mundo</button>
+  </div>
+</div>
+<audio id="songFile" src="musica/morocha.mp3" loop preload="none"></audio>
+<button class="btn music" id="music" aria-pressed="false"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musicTxt">Música</span></button>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="toast" id="toast" role="status"><img id="toastImg" alt=""><div><b>¡Logro desbloqueado!</b><span id="toastTxt"></span></div></div>
+
+<script src="script.js"></script>
+</body>
+</html>
